@@ -1,4 +1,5 @@
 {
+  "id": "/expense-tracker-web/",
   "name": "Expense Tracker",
   "short_name": "ExpenseTracker",
   "start_url": "/expense-tracker-web/",
