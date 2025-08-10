@@ -35,15 +35,38 @@
 
   <title>Expense Tracker</title>
   <link rel="manifest" href="manifest.json">
-  <script type="text/javascript">
-	console.log("=========================== 1");
-  </script>
 </head>
 <body>
+  <script type="text/javascript">
+	function isIOS() {
+        return /iphone|ipad|ipod/i.test(navigator.userAgent);
+    }
+
+    function isSafari() {
+        // Safari on iOS has 'Safari' in UA but not 'CriOS' (Chrome) or 'FxiOS' (Firefox)
+        return /^((?!crios|fxios).)*safari/i.test(navigator.userAgent);
+    }
+
+    if (isIOS() && !isSafari()) {
+        const banner = document.createElement('div');
+        banner.style.position = 'fixed';
+        banner.style.bottom = '0';
+        banner.style.left = '0';
+        banner.style.right = '0';
+        banner.style.background = '#ffcc00';
+        banner.style.color = '#000';
+        banner.style.padding = '12px';
+        banner.style.fontSize = '14px';
+        banner.style.textAlign = 'center';
+        banner.style.zIndex = '9999';
+        banner.innerHTML = '📱 To install this app, please open in <b>Safari</b> and choose <em>Add to Home Screen</em>.';
+        
+        document.body.appendChild(banner);
+    }
+  </script>
   <!-- <script src="flutter_bootstrap.js" async></script> -->
   <script src="flutter.js" defer></script>
   <script type="text/javascript">
-	console.log("=========================== 2x");
     window.addEventListener('load', function(ev) {
     _flutter.loader.loadEntrypoint({
       serviceWorker: {
